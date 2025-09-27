@@ -181,12 +181,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Flexbox for perfect centering */
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    
-    background: radial-gradient(circle at center, #8B0000 0%, #400000 100%); /* Deep Red/Maroon Gradient */
+    background: radial-gradient(circle at center, #8B0000 0%, #400000 100%);
     z-index: 1000;
     color: white;
     text-align: center; 
@@ -200,35 +198,34 @@ body {
     display: flex; 
     flex-direction: column;
     align-items: center; 
-    /* Visual nudge for perfect vertical centering */
-    margin-top: 50px; 
+    margin-top: 50px; /* Adjusts vertical positioning */
 }
 
 .welcome-text {
     font-family: 'Great Vibes', cursive; 
     font-size: 4em;
-    color: #FFD700; /* Gold color */
+    color: #FFD700;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    margin-top: 0; /* Remove default h2 margin */
+    margin-top: 0; 
     margin-bottom: 5px;
 }
 
 .sub-text {
     font-size: 1.2em;
-    margin-bottom: 25px; /* Space above the button */
+    margin-bottom: 25px;
     color: #F0F8FF;
 }
 
 /* --- FESTIVE BUTTON STYLING (DPC Team) --- */
 
 .festive-button {
-    background: linear-gradient(145deg, #006400, #008000); /* Green Gradient */
+    background: linear-gradient(145deg, #006400, #008000); 
     color: white;
-    border: 3px solid #FFD700; /* Gold Border */
+    border: 3px solid #FFD700;
     padding: 15px 30px;
     font-size: 1.5em;
     font-weight: bold;
-    border-radius: 50px; /* Pill shape */
+    border-radius: 50px;
     cursor: pointer;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
@@ -246,40 +243,20 @@ body {
     margin-right: 10px;
 }
 
-/* --- PHOTO SECTION STYLING (Reverted from Video) --- */
+/* --- VIDEO STYLING (Responsive Display) --- */
 
 .photo-container {
-    max-width: 700px; 
+    max-width: 800px; /* Max width for your video */
     margin: 20px auto; 
-    border: 5px solid white; /* Simple border for framing */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
     overflow: hidden;
+    border-radius: 8px; /* Optional: adds rounded corners to the video box */
 }
 
-/* Ensures the image is responsive */
+/* Ensures the video is responsive and fills its container */
 .group-photo {
     width: 100%;
     height: auto;
-    display: block;
+    display: block; 
 }
 
-.photo-caption {
-    text-align: center;
-    margin-top: 10px;
-    font-style: italic;
-    color: #666;
-}
-
-/* --- OTHER SECTIONS STYLING --- */
-.header, .footer {
-    text-align: center;
-    padding: 10px 0;
-}
-
-.section-title {
-    text-align: center;
-    color: darkred;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
+/* --- GENERAL STYLING --- (Keep your existing styles for header, footer, etc.) */
