@@ -158,65 +158,22 @@ body::before {
         transform: translateY(100vh);
     }
 
-}/* --- OVERLAY STYLING (CORRECTED) --- */
-
-}
-/* CONTAINER for the video and the custom button */
-#video-wrapper {
-    position: relative; /* Essential for positioning the button over the video */
-    max-width: 800px; /* Adjust to match your desired video width */
-    margin: 20px auto;
-}
-
-/* Ensure the video fills the wrapper and the button is visible over it */
-#celebration-video {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-    /* Optional: Make the video slightly darker when paused/before playing */
-    filter: brightness(0.8); 
-    transition: filter 0.3s;
+/* --- GLOBAL/BODY STYLING --- */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-#celebration-video.playing {
-    filter: brightness(1); /* Full brightness when playing */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* THE MODERN GREEN PLAY BUTTON */
-.modern-play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centering trick */
-    
-    /* Styling */
-    background-color: rgba(0, 128, 0, 0.85); /* Semi-transparent Green */
-    color: white;
-    border: 3px solid white;
-    border-radius: 50%; /* Circle shape */
-    width: 80px;
-    height: 80px;
-    font-size: 2em;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s, transform 0.3s;
-    
-    /* Ensure icon is centered */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modern-play-button:hover {
-    background-color: rgb(0, 150, 0); /* Brighter green on hover */
-    transform: translate(-50%, -50%) scale(1.05); /* Subtle grow effect */
-}
-
-.modern-play-button.hidden {
-    display: none;
-}
-/* --- OVERLAY STYLING (PERFECT VERTICAL CENTER) --- */
+/* --- OVERLAY STYLING (For Centering) --- */
 
 #intro-overlay {
     position: fixed;
@@ -224,12 +181,12 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Standard Flexbox centering (essential) */
+    /* Flexbox for perfect centering */
     display: flex; 
     justify-content: center; 
     align-items: center; 
     
-    background: radial-gradient(circle at center, #8B0000 0%, #400000 100%); 
+    background: radial-gradient(circle at center, #8B0000 0%, #400000 100%); /* Deep Red/Maroon Gradient */
     z-index: 1000;
     color: white;
     text-align: center; 
@@ -238,145 +195,91 @@ body::before {
 
 .overlay-content {
     padding: 40px 60px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4); 
     border-radius: 15px;
     display: flex; 
     flex-direction: column;
     align-items: center; 
-
-    /* ✨ THE FIX: Nudge the entire box down slightly. 
-       This visually compensates for the large H2 which otherwise 
-       makes the "center" feel too high. */
+    /* Visual nudge for perfect vertical centering */
     margin-top: 50px; 
 }
 
 .welcome-text {
     font-family: 'Great Vibes', cursive; 
     font-size: 4em;
-    margin-bottom: 5px;
-    color: #FFD700; 
+    color: #FFD700; /* Gold color */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    
-    /* Crucial: Remove default top margin on H2 for better center calculation */
-    margin-top: 0; 
+    margin-top: 0; /* Remove default h2 margin */
+    margin-bottom: 5px;
 }
-
-/* --- FESTIVE BUTTON STYLING (Ensuring space below text) --- */
 
 .sub-text {
     font-size: 1.2em;
-    margin-bottom: 25px; /* Ensure good space above the button */
-    color: #F0F8FF; 
+    margin-bottom: 25px; /* Space above the button */
+    color: #F0F8FF;
 }
 
+/* --- FESTIVE BUTTON STYLING (DPC Team) --- */
+
 .festive-button {
-    background: linear-gradient(145deg, #006400, #008000);
+    background: linear-gradient(145deg, #006400, #008000); /* Green Gradient */
     color: white;
-    border: 3px solid #FFD700;
+    border: 3px solid #FFD700; /* Gold Border */
     padding: 15px 30px;
     font-size: 1.5em;
     font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-    transition: all
-
-/* --- OVERLAY STYLING (FINAL FIX) --- */
-
-#intro-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Keep these properties for overall screen centering */
-    display: flex; 
-    justify-content: center; 
-    align-items: center; /* This centers the content box */
-    
-    background: radial-gradient(circle at center, #8B0000 0%, #400000 100%); 
-    z-index: 1000;
-    color: white;
-    text-align: center; 
-    transition: opacity 0.5s ease-out; 
-}
-
-.overlay-content {
-    padding: 40px 60px;
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 15px;
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-
-    /* ✨ THE KEY FIX: Using margin-top to visually nudge the box down. */
-    /* This compensates for the large H2 tag visually pulling the center up. */
-    margin-top: 50px; 
-}
-
-.welcome-text {
-    /* Reduce the top margin of the H2 element, which helps center the overall box */
-    margin-top: 0; 
-    
-    font-family: 'Great Vibes', cursive; 
-    font-size: 4em;
-    margin-bottom: 5px;
-    color: #FFD700; 
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-}
-
-/* ... all other styles (sub-text, festive-button, etc.) remain the same ... */
-
-    /* --- OVERLAY STYLING (CORRECTED) --- */
-
-#intro-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Use Flexbox for perfect centering */
-    display: flex; 
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    
-    background: radial-gradient(circle at center, #8B0000 0%, #400000 100%); 
-    z-index: 1000;
-    color: white;
-    text-align: center; /* Centers text within the overlay-content box */
-    transition: opacity 0.5s ease-out; 
-}
-
-.overlay-content {
-    /* No need to set width/height here; let content define size */
-    padding: 40px 60px; /* Increased padding for better appearance */
-    background-color: rgba(0, 0, 0, 0.4); /* Slightly darker background for better contrast */
-    border-radius: 15px;
-    /* Ensure the content is displayed as a column to stack the text and button */
-    display: flex; 
-    flex-direction: column;
-    align-items: center; /* Aligns items (h2, p, button) perfectly in the center */
-}
-
-/* --- FESTIVE BUTTON STYLING (REMAINS THE SAME) --- */
-
-.festive-button {
-    background: linear-gradient(145deg, #006400, #008000);
-    color: white;
-    border: 3px solid #FFD700;
-    padding: 15px 30px;
-    font-size: 1.5em;
-    font-weight: bold;
-    border-radius: 50px;
+    border-radius: 50px; /* Pill shape */
     cursor: pointer;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    /* Added margin-top to separate button from the text above */
-    margin-top: 25px; 
 }
 
-/* ... rest of your CSS ... */
+.festive-button:hover {
+    background: linear-gradient(145deg, #008000, #006400); 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+}
 
+.festive-button i {
+    margin-right: 10px;
+}
 
+/* --- PHOTO SECTION STYLING (Reverted from Video) --- */
+
+.photo-container {
+    max-width: 700px; 
+    margin: 20px auto; 
+    border: 5px solid white; /* Simple border for framing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Ensures the image is responsive */
+.group-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.photo-caption {
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+    color: #666;
+}
+
+/* --- OTHER SECTIONS STYLING --- */
+.header, .footer {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.section-title {
+    text-align: center;
+    color: darkred;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
