@@ -11,7 +11,7 @@
 <body>
     <audio id="background-music" src="starpasko.mp3" autoplay loop></audio>
 
-    <div id="intro-overlay">
+        <div id="intro-overlay">
         <div class="overlay-content">
             <h2 class="welcome-text">A Year of Prospects!</h2>
             <p class="sub-text">Tap DPC Team to enter our PSC-Oh celebration.</p>
@@ -45,34 +45,5 @@
     </div>
     
     <div id="snow-container"></div>
-    <script src="script.js"></script>
-    <script>
-        document.getElementById('play-button').addEventListener('click', function() {
-            const audio = document.getElementById('background-music');
-            const video = document.getElementById('celebration-video'); // Get the video element
-
-            // Attempt to play music first (since it's an async operation)
-            audio.play().then(() => {
-                // Play the video and fade out the overlay after successful audio start
-                if (video) {
-                    video.play(); // 🎬 Start the video playback
-                }
-
-                const overlay = document.getElementById('intro-overlay');
-                overlay.style.opacity = '0'; // Start fade out
-                setTimeout(() => {
-                    overlay.style.display = 'none'; // Hide after fade
-                }, 500); // Matches the CSS transition duration
-
-            }).catch(error => {
-                console.error("Audio autoplay failed, proceeding with video:", error);
-                
-                // If audio fails, still attempt to play video and hide the overlay
-                if (video) {
-                    video.play(); // 🎬 Attempt to start video even if audio fails
-                }
-                document.getElementById('intro-overlay').style.display = 'none';
-            });
-        });
-</body>
+    <script src="script.js"></script> </body>
 </html>
