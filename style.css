@@ -205,3 +205,19 @@ body::before {
 }
 
 /* ... all other styles (sub-text, festive-button, etc.) remain the same ... */
+
+{/* Ensures the video is responsive and fills its container */
+.group-photo {
+    /* For images or video */
+    width: 100%;
+    height: auto;
+    display: block; /* Removes any extra space below the video */
+    border-radius: 8px; /* Optional: Keep it styled like the photo was */
+}
+
+/* Ensure the photo-container manages the video size */
+.photo-container {
+    max-width: 800px; /* Example: set a maximum size for the video */
+    margin: 20px auto; /* Centers the container */
+    overflow: hidden;
+}
