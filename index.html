@@ -31,7 +31,10 @@
         <section class="photo-section">
             <h2 class="section-title">Our Precious Little Princess, Mrs. Patricia Macaraig Beef Pares</h2>
             <div class="photo-container">
-                                <img src="bayot2.jpg" alt="Our group's Christmas photo" class="group-photo">
+                                <video id="celebration-video" controls class="group-photo" preload="metadata">
+                    <source src="your_video.mp4" type="video/mp4"> 
+                    Your browser does not support the video tag.
+                </video>
             </div>
             <p class="photo-caption">Seeing the Beauty of Once in A lifetime Scenery.</p>
         </section>
@@ -46,21 +49,28 @@
     <script>
         document.getElementById('play-button').addEventListener('click', function() {
             const audio = document.getElementById('background-music');
-            
-            // Note: The video element and video.play() call have been removed.
+            const video = document.getElementById('celebration-video'); // Get the video element
 
-            // Attempt to play music
+            // Attempt to play music first (since it's an async operation)
             audio.play().then(() => {
-                // Fade out and hide the overlay
+                // Play the video and fade out the overlay after successful audio start
+                if (video) {
+                    video.play(); // 🎬 Start the video playback
+                }
+
                 const overlay = document.getElementById('intro-overlay');
-                overlay.style.opacity = '0'; 
+                overlay.style.opacity = '0'; // Start fade out
                 setTimeout(() => {
-                    overlay.style.display = 'none'; 
-                }, 500); 
+                    overlay.style.display = 'none'; // Hide after fade
+                }, 500); // Matches the CSS transition duration
 
             }).catch(error => {
-                console.error("Audio autoplay failed:", error);
-                // Hide overlay even if audio fails
+                console.error("Audio autoplay failed, proceeding with video:", error);
+                
+                // If audio fails, still attempt to play video and hide the overlay
+                if (video) {
+                    video.play(); // 🎬 Attempt to start video even if audio fails
+                }
                 document.getElementById('intro-overlay').style.display = 'none';
             });
         });
