@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maligayang PSC-Oh!</title>
     <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <audio id="background-music" src="starpasko.mp3" autoplay loop></audio>
 
-        <div id="intro-overlay">
+    <div id="intro-overlay">
         <div class="overlay-content">
             <h2 class="welcome-text">A Year of Prospects!</h2>
             <p class="sub-text">Tap DPC Team to enter our PSC-Oh celebration.</p>
               
-                        <button id="play-button" class="festive-button">
+            <button id="play-button" class="festive-button">
                 <i class="fa fa-gift"></i> DPC Team
             </button>
         </div>
@@ -26,24 +27,15 @@
             <h1>Maligayang PSC-Oh!</h1>
             <p>From our Team to yours, Merry Christmas!</p>
         </header>
+
         <section class="photo-section">
             <h2 class="section-title">Our Precious Little Princess, Mrs. Patricia Macaraig Beef Pares</h2>
             <div class="photo-container">
-                
-                <div id="video-wrapper">
-                    <video id="celebration-video" class="group-photo" preload="metadata">
-                        <source src="your_video.mp4" type="video/mp4"> 
-                        Your browser does not support the video tag.
-                    </video>
-                    
-                    <button id="custom-play-button" class="modern-play-button">
-                        <i class="fas fa-play"></i> 
-                    </button>
-                </div>
-                
+                                <img src="bayot2.jpg" alt="Our group's Christmas photo" class="group-photo">
             </div>
             <p class="photo-caption">Seeing the Beauty of Once in A lifetime Scenery.</p>
         </section>
+
         <footer class="footer">
             <p>&copy; 2025. Created with Love, Joy, and Sucess.</p>
         </footer>
@@ -52,60 +44,26 @@
     <div id="snow-container"></div>
     <script src="script.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const audio = document.getElementById('background-music');
-        const introButton = document.getElementById('play-button');
-        const introOverlay = document.getElementById('intro-overlay');
-        
-        // New elements for video control
-        const video = document.getElementById('celebration-video'); 
-        const customPlayButton = document.getElementById('custom-play-button'); 
-
-        // 1. INTRO BUTTON CLICK HANDLER
-        introButton.addEventListener('click', function() {
-            // Start audio
-            audio.play().catch(error => {
-                console.error("Audio autoplay failed:", error);
-            });
+        document.getElementById('play-button').addEventListener('click', function() {
+            const audio = document.getElementById('background-music');
             
-            // Hide the intro overlay
-            introOverlay.style.opacity = '0'; 
-            setTimeout(() => {
-                introOverlay.style.display = 'none'; 
-            }, 500); 
+            // Note: The video element and video.play() call have been removed.
 
-            // IMPORTANT: The video will NOT auto-play here because a second interaction 
-            // is usually required for the video. The custom button handles this.
-        });
+            // Attempt to play music
+            audio.play().then(() => {
+                // Fade out and hide the overlay
+                const overlay = document.getElementById('intro-overlay');
+                overlay.style.opacity = '0'; 
+                setTimeout(() => {
+                    overlay.style.display = 'none'; 
+                }, 500); 
 
-        // 2. CUSTOM VIDEO PLAY BUTTON HANDLER
-        if (video && customPlayButton) {
-            customPlayButton.addEventListener('click', function() {
-                if (video.paused) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            });
-
-            // 3. LISTEN FOR VIDEO STATE CHANGES to hide/show the button
-            video.addEventListener('play', () => {
-                customPlayButton.classList.add('hidden');
-                video.classList.add('playing');
-            });
-
-            video.addEventListener('pause', () => {
-                customPlayButton.classList.remove('hidden');
-                video.classList.remove('playing');
-            });
-
-            video.addEventListener('ended', () => {
-                customPlayButton.classList.remove('hidden');
-                video.classList.remove('playing');
-                video.currentTime = 0; // Rewind the video
-            });
-        }
-    });
-</script>
+            }).catch(error => {
+                console.error("Audio autoplay failed:", error);
+                // Hide overlay even if audio fails
+                document.getElementById('intro-overlay').style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
