@@ -54,21 +54,60 @@
     <div id="snow-container"></div>
     <script src="script.js"></script>
     <script>
-        document.getElementById('play-button').addEventListener('click', function() {
-            const audio = document.getElementById('background-music');
-            // Attempt to play and fade out the overlay
-            audio.play().then(() => {
-                const overlay = document.getElementById('intro-overlay');
-                overlay.style.opacity = '0'; // Start fade out
-                setTimeout(() => {
-                    overlay.style.display = 'none'; // Hide after fade
-                }, 500); // Matches the CSS transition duration
-            }).catch(error => {
-                console.error("Autoplay failed:", error);
-                // Still hide the overlay even if audio fails
-                document.getElementById('intro-overlay').style.display = 'none';
-            });
-        });
-    </script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('background-music');
+        const introButton = document.getElementById('play-button');
+        const introOverlay = document.getElementById('intro-overlay');
+        
+        // New elements for video control
+        const video = document.getElementById('celebration-video'); 
+        const customPlayButton = document.getElementById('custom-play-button'); 
+
+        // 1. INTRO BUTTON CLICK HANDLER
+        introButton.addEventListener('click', function() {
+            // Start audio
+            audio.play().catch(error => {
+                console.error("Audio autoplay failed:", error);
+            });
+            
+            // Hide the intro overlay
+            introOverlay.style.opacity = '0'; 
+            setTimeout(() => {
+                introOverlay.style.display = 'none'; 
+            }, 500); 
+
+            // IMPORTANT: The video will NOT auto-play here because a second interaction 
+            // is usually required for the video. The custom button handles this.
+        });
+
+        // 2. CUSTOM VIDEO PLAY BUTTON HANDLER
+        if (video && customPlayButton) {
+            customPlayButton.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+
+            // 3. LISTEN FOR VIDEO STATE CHANGES to hide/show the button
+            video.addEventListener('play', () => {
+                customPlayButton.classList.add('hidden');
+                video.classList.add('playing');
+            });
+
+            video.addEventListener('pause', () => {
+                customPlayButton.classList.remove('hidden');
+                video.classList.remove('playing');
+            });
+
+            video.addEventListener('ended', () => {
+                customPlayButton.classList.remove('hidden');
+                video.classList.remove('playing');
+                video.currentTime = 0; // Rewind the video
+            });
+        }
+    });
+</script>
 </body>
 </html>
