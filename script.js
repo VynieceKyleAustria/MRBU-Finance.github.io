@@ -1,16 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const snowContainer = document.getElementById('snow-container');
-    const numberOfSnowflakes = 100;
+// This is the content for your <script> block in the HTML, or your script.js file.
 
-    for (let i = 0; i < numberOfSnowflakes; i++) {
-        const snow = document.createElement('div');
-        snow.className = 'snow';
-        snow.style.left = `${Math.random() * 100}vw`;
-        snow.style.animationDuration = `${Math.random() * 3 + 4}s`;
-        snow.style.animationDelay = `${Math.random() * 5}s`;
-        snow.style.opacity = Math.random() * 0.7 + 0.3;
-        snowContainer.appendChild(snow);
-    }
+document.getElementById('play-button').addEventListener('click', function() {
+    const audio = document.getElementById('background-music');
+    
+    // Attempt to play music
+    audio.play().then(() => {
+        // Fade out and hide the overlay
+        const overlay = document.getElementById('intro-overlay');
+        overlay.style.opacity = '0'; 
+        setTimeout(() => {
+            overlay.style.display = 'none'; 
+        }, 500); // Wait for the 0.5s CSS transition
 
+    }).catch(error => {
+        console.error("Audio autoplay failed:", error);
+        // Hide overlay even if audio fails to ensure user can see the content
+        document.getElementById('intro-overlay').style.display = 'none';
+    });
 });
-
