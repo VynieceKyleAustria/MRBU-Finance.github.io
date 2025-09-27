@@ -157,4 +157,84 @@ body::before {
     to {
         transform: translateY(100vh);
     }
+
+}/* --- OVERLAY STYLING --- */
+
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #8B0000 0%, #400000 100%); /* Deep Red/Maroon Gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+    text-align: center;
+    /* Add a smooth transition for fading out */
+    transition: opacity 0.5s ease-out; 
+}
+
+.overlay-content {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background for text block */
+    border-radius: 15px;
+}
+
+.welcome-text {
+    /* Uses the beautiful font link added to the <head> */
+    font-family: 'Great Vibes', cursive; 
+    font-size: 4em;
+    margin-bottom: 5px;
+    color: #FFD700; /* Gold color */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.sub-text {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    color: #F0F8FF; /* Off-white */
+}
+
+/* --- FESTIVE BUTTON STYLING --- */
+
+.festive-button {
+    background: linear-gradient(145deg, #006400, #008000); /* Dark Green to Bright Green */
+    color: white;
+    border: 3px solid #FFD700; /* Gold Border */
+    padding: 15px 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.festive-button:hover {
+    background: linear-gradient(145deg, #008000, #006400); /* Invert gradient on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Optional: Add a subtle animation to the gift icon (requires Font Awesome) */
+.festive-button i {
+    margin-right: 10px;
+    animation: sparkle 1.5s infinite alternate;
+}
+
+/* --- Optional Keyframe for sparkle animation (for the icon) --- */
+@keyframes sparkle {
+    from {
+        color: white;
+        transform: scale(1);
+    }
+    to {
+        color: #FFD700;
+        transform: scale(1.1);
+    }
 }
