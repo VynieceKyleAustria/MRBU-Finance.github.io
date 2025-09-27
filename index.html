@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maligayang Pasko!</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maligayang Pasko!</title>
+    <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
-    <audio id="background-music" src="starpasko.mp3" autoplay loop></audio>
+    <audio id="background-music" src="starpasko.mp3" autoplay loop></audio>
 
-    <div id="intro-overlay">
-        <div class="overlay-content">
-            <h2>Welcome!</h2>
-            <p>Click anywhere to enter and start the Christmas music.</p>
-            <button id="play-button">Play Music</button>
-        </div>
-    </div>
+        <div id="intro-overlay">
+        <div class="overlay-content">
+            <h2 class="welcome-text">Season's Greetings!</h2>
+            <p class="sub-text">Tap anywhere to enter our Pasko celebration.</p>
+              
+                        <button id="play-button" class="festive-button">
+                <i class="fa fa-gift"></i> Start the Cheer
+            </button>
+        </div>
+    </div>
 
-    <div class="container">
-        <header class="header">
-            <h1>Maligayang Pasko!</h1>
-            <p>From our group to yours, Merry Christmas!</p>
-        </header>
+    <div class="container">
+        <header class="header">
+            <h1>Maligayang Pasko!</h1>
+            <p>From our group to yours, Merry Christmas!</p>
+        </header>
 
-        <section class="photo-section">
-            <h2 class="section-title">A Look Back at Our Time</h2>
-            <div class="photo-container">
-                <img src="bayot.jpg" alt="Our group's Christmas photo" class="group-photo">
-            </div>
-            <p class="photo-caption">Sharing laughter and joy this holiday season.</p>
-        </section>
+        <section class="photo-section">
+            <h2 class="section-title">A Look Back at Our Time</h2>
+            <div class="photo-container">
+                <img src="bayot.jpg" alt="Our group's Christmas photo" class="group-photo">
+            </div>
+            <p class="photo-caption">Sharing laughter and joy this holiday season.</p>
+        </section>
 
-        <footer class="footer">
-            <p>&copy; 2025. Created with Christmas cheer.</p>
-        </footer>
-    </div>
-    
-    <div id="snow-container"></div>
-    <script src="script.js"></script>
-    <script>
-        document.getElementById('play-button').addEventListener('click', function() {
-            const audio = document.getElementById('background-music');
-            audio.play().then(() => {
-                document.getElementById('intro-overlay').style.display = 'none';
-            }).catch(error => {
-                console.error("Autoplay failed:", error);
-                document.getElementById('intro-overlay').style.display = 'none';
-                alert('Audio playback could not be started automatically. You may need to enable it manually in your browser settings.');
-            });
-        });
-    </script>
+        <footer class="footer">
+            <p>&copy; 2025. Created with Christmas cheer.</p>
+        </footer>
+    </div>
+    
+    <div id="snow-container"></div>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('play-button').addEventListener('click', function() {
+            const audio = document.getElementById('background-music');
+            // Attempt to play and fade out the overlay
+            audio.play().then(() => {
+                const overlay = document.getElementById('intro-overlay');
+                overlay.style.opacity = '0'; // Start fade out
+                setTimeout(() => {
+                    overlay.style.display = 'none'; // Hide after fade
+                }, 500); // Matches the CSS transition duration
+            }).catch(error => {
+                console.error("Autoplay failed:", error);
+                // Still hide the overlay even if audio fails
+                document.getElementById('intro-overlay').style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
