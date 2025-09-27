@@ -160,66 +160,6 @@ body::before {
 
 }/* --- OVERLAY STYLING (CORRECTED) --- */
 
-/* --- OVERLAY STYLING (FINAL FIX) --- */
-
-#intro-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Keep these properties for overall screen centering */
-    display: flex; 
-    justify-content: center; 
-    align-items: center; /* This centers the content box */
-    
-    background: radial-gradient(circle at center, #8B0000 0%, #400000 100%); 
-    z-index: 1000;
-    color: white;
-    text-align: center; 
-    transition: opacity 0.5s ease-out; 
-}
-
-.overlay-content {
-    padding: 40px 60px;
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 15px;
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-
-    /* ✨ THE KEY FIX: Using margin-top to visually nudge the box down. */
-    /* This compensates for the large H2 tag visually pulling the center up. */
-    margin-top: 50px; 
-}
-
-.welcome-text {
-    /* Reduce the top margin of the H2 element, which helps center the overall box */
-    margin-top: 0; 
-    
-    font-family: 'Great Vibes', cursive; 
-    font-size: 4em;
-    margin-bottom: 5px;
-    color: #FFD700; 
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-}
-
-/* ... all other styles (sub-text, festive-button, etc.) remain the same ... */
-
-{/* Ensures the video is responsive and fills its container */
-.group-photo {
-    /* For images or video */
-    width: 100%;
-    height: auto;
-    display: block; /* Removes any extra space below the video */
-    border-radius: 8px; /* Optional: Keep it styled like the photo was */
-}
-
-/* Ensure the photo-container manages the video size */
-.photo-container {
-    max-width: 800px; /* Example: set a maximum size for the video */
-    margin: 20px auto; /* Centers the container */
-    overflow: hidden;
 }
 /* CONTAINER for the video and the custom button */
 #video-wrapper {
@@ -276,5 +216,6 @@ body::before {
 .modern-play-button.hidden {
     display: none;
 }
+
 
 
