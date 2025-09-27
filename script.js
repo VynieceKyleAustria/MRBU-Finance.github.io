@@ -2,7 +2,7 @@ document.getElementById('play-button').addEventListener('click', function() {
     const audio = document.getElementById('background-music');
     const video = document.getElementById('celebration-video'); 
 
-    // Attempt to play background music first (requires user interaction)
+    // Attempt to play background music first
     audio.play().then(() => {
         // If music starts successfully:
 
@@ -21,7 +21,7 @@ document.getElementById('play-button').addEventListener('click', function() {
     }).catch(error => {
         console.error("Audio autoplay failed, proceeding with video and page entry:", error);
         
-        // If audio fails (e.g., policy blocks it), still proceed:
+        // If audio fails, still proceed with video and page entry:
         
         // 1. Attempt to start video anyway
         if (video) {
