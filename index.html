@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accounting Team: Happy Holidays! 🎄</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+
+    <title>Accounting Team: Happy Holidays! 🎄</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="preload" href="Tayo.mp3" as="audio">
+    <link rel="preload" href="KAMI.mp4" as="video">
+
 </head>
 <body>
-    <audio id="background-music" src="Tayo.mp3" autoplay loop></audio>
+    <audio id="background-music" src="Tayo.mp3" loop></audio>
 
-    <button id="music-starter" style="display: none;">Start Music</button>
-    <div id="music-message" class="music-prompt">
-        Click anywhere to enjoy our festive music!
-    </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <header class="header">
-            <div class="seven-eleven-logo">
-                <span class="seven">7</span><span class="eleven">ELEVEN</span>
-            </div>
-            <h1>Merry Christmas & Happy New Year!</h1> 
-            <p>Wishing all departments a harmonious and joyful holiday season!</p>
-            <p class="greeting-signature">– From your friends on the **Accounting Team**</p>
-        </header>
+    <div id="music-prompt-container" class="music-prompt">
+        <button id="music-starter" class="music-toggle-btn">
+             Click to Play Festive Music <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="seven-eleven-logo">
+                <span class="seven">7</span><span class="eleven">ELEVEN</span>
+            </div>
+            <h1>Merry Christmas & Happy New Year!</h1> 
+            <p>Wishing all departments a harmonious and joyful holiday season!</p>
+            <p class="greeting-signature">– From your friends on the **Accounting Team**</p>
+        </header>
 
-        <section class="photo-section">
-            <h2 class="section-title">A Look Back at a Great Year!</h2>
-            <div class="photo-container">
-                <video id="celebration-video" controls class="group-photo" preload="metadata" autoplay muted loop>
-                    <source src="KAMI.mp4" type="video/mp4"> 
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <p class="photo-caption">We look forward to balancing the books and sharing success with you in the New Year!</p>
-        </section>
+        <section class="photo-section">
+            <h2 class="section-title">A Look Back at a Great Year!</h2>
+            <div class="photo-container">
+                <video id="celebration-video" controls class="group-photo" preload="metadata" playsinline>
+                    <source src="KAMI.mp4" type="video/mp4"> 
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p class="photo-caption">We look forward to balancing the books and sharing success with you in the New Year!</p>
+        </section>
 
-        <footer class="footer">
-            <p>&copy; 2025. Created with 7-Eleven Christmas cheer by the **Accounting Team**.</p>
-        </footer>
+        <footer class="footer">
+            <p>&copy; 2025. Created with 7-Eleven Christmas cheer by the **Accounting Team**.</p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const musicStarter = document.getElementById('music-starter');
+            const backgroundMusic = document.getElementById('background-music');
+
+            musicStarter.addEventListener('click', () => {
+                backgroundMusic.play().then(() => {
+                    // Hide the prompt once music starts
+                    document.getElementById('music-prompt-container').style.display = 'none';
+                }).catch(error => {
+                    // Handle case where play is still blocked (e.g., system settings)
+                    console.log("Music play failed:", error);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
