@@ -33,13 +33,60 @@
             <h2 class="section-title">A Look Back at a Great Year!</h2>
             <div class="photo-container">
                 <video id="celebration-video" controls class="group-photo" preload="metadata" autoplay muted loop>
-                    <source src="US.mp4" type="video/mp4"> 
+                    <source src="KAMI.mp4" type="video/mp4"> 
                     Your browser does not support the video tag.
                 </video>
             </div>
             <p class="photo-caption">We look forward to balancing the books and sharing success with you in the New Year!</p>
         </section>
 
+        <section class="recycling-section">
+            <h2 class="section-title">♻️ Recyclable Materials Guide 🌍</h2>
+            <p>Let's make sure our holiday waste is handled responsibly. Here are some common materials we can recycle:</p>
+            <table class="recycling-table">
+                <thead>
+                    <tr>
+                        <th>Material Type</th>
+                        <th>Example Items</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>**Paper & Cardboard**</td>
+                        <td>Wrapping paper (non-metallic), flattened gift boxes, greeting cards.</td>
+                        <td>Remove ribbons/tape, flatten boxes.</td>
+                    </tr>
+                    <tr>
+                        <td>**Plastics**</td>
+                        <td>Beverage bottles, rigid plastic food containers, plastic tubs (Check recycling number 1-7).</td>
+                        <td>Rinse clean and remove lids if possible.</td>
+                    </tr>
+                    <tr>
+                        <td>**Metals**</td>
+                        <td>Aluminum cans, foil (clean), steel food cans.</td>
+                        <td>Empty and rinse thoroughly.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="recycling-note">**Tip:** Check with your local waste management for specific guidelines on what can be accepted!</p>
+        </section>
         <footer class="footer">
             <p>&copy; 2025. Created with 7-Eleven Christmas cheer by the **Accounting Team**.</p>
         </footer>
+    </div>
+    <script>
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('background-music');
+            const message = document.getElementById('music-message');
+            if (audio.paused) {
+                audio.play().catch(error => {
+                    // Autoplay was prevented
+                    console.error("Music autoplay prevented:", error);
+                });
+                message.style.display = 'none';
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
