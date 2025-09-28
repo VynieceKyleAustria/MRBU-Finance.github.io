@@ -1,210 +1,238 @@
 /* Color Palette:
-   7-Eleven Green: #008938
-   7-Eleven Red: #DD0000
-   7-Eleven Orange: #FF8200
-   Harmonious Christmas Gold: #DAA520 (Goldenrod)
-   Harmonious Christmas Maroon: #800000 (Deep Red)
+    7-Eleven Green: #008938
+    7-Eleven Red: #DD0000
+    7-Eleven Orange: #FF8200
+    Harmonious Christmas Gold: #DAA520 (Goldenrod)
+    Harmonious Christmas Maroon: #800000 (Deep Red)
 */
 
+/* ----------------------------------------------------
+   1. MOBILE-FIRST BASE STYLES (Default for all screens)
+   ---------------------------------------------------- */
+
 body {
-    font-family: 'Times New Roman', serif; /* More classic font for harmony */
+    /* Set relative font size and font family for mobile base */
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 16px; /* Base for REM calculations */
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8; /* Soft white/off-white background */
+    background-color: #f8f8f8;
     color: #333;
-    overflow-x: hidden;
-    /* Removed the aggressive gradient for a calmer, harmonious feel */
+    /* Removed overflow-x: hidden; (best practice to avoid scroll issues) */
     min-height: 100vh;
-    border-top: 10px solid #DD0000; /* 7-Eleven Red Top Border */
-    border-bottom: 10px solid #008938; /* 7-Eleven Green Bottom Border */
+    border-top: 10px solid #DD0000;
+    border-bottom: 10px solid #008938;
 }
 
 .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff; /* Crisp white center */
-    border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); /* Softer shadow */
-    border: 1px solid #FF8200; /* Subtle 7-Eleven Orange Outline */
+    /* Mobile-First: Use 100% width with a little padding */
+    width: 100%; 
+    max-width: none; /* Override old max-width */
+    margin: 0; /* Remove vertical margins on mobile */
+    padding: 20px 15px; /* Use smaller, uniform padding for tight screens */
+    background-color: #ffffff;
+    border-radius: 0; /* No heavy radius on mobile, can add later */
+    box-shadow: none; /* Lighter shadow for performance on mobile */
+    border: none; /* Remove border on small screens */
 }
 
-/* --- 7-ELEVEN LOGO STYLING --- */
+/* --- LOGO STYLING --- */
 
 .seven-eleven-logo {
-    font-family: sans-serif;
-    font-weight: 900;
-    font-size: 2.5em;
+    font-size: 1.8em; /* Smaller, relative size */
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .seven {
-    color: #DD0000; /* 7-Eleven Red */
-    padding-right: 5px;
+    color: #DD0000;
+    padding-right: 2px;
 }
 
 .eleven {
-    color: #008938; /* 7-Eleven Green */
-    background-color: #FF8200; /* 7-Eleven Orange Background */
-    padding: 2px 5px;
-    border-radius: 5px;
-    letter-spacing: 1px;
+    color: #008938;
+    background-color: #FF8200;
+    padding: 1px 3px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
 }
 
 /* --- HEADER/TEXT STYLING --- */
 
 .header {
     text-align: center;
-    padding-bottom: 25px;
-    border-bottom: 2px solid #DAA520; /* Christmas Gold Separator */
+    padding-bottom: 20px;
+    border-bottom: 2px solid #DAA520;
 }
 
 .header h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 4em; /* Larger, more elegant size */
-    color: #800000; /* Rich Maroon for harmony */
-    text-shadow: 1px 1px 2px #DAA520; /* Subtle Gold shadow */
-    margin: 10px 0;
+    font-family: 'Dancing Script', cursive;
+    /* Use relative units for headings */
+    font-size: 2.5rem; 
+    color: #800000;
+    text-shadow: 1px 1px 2px #DAA520;
+    margin: 5px 0 10px 0;
 }
 
 .header p {
-    color: #333; /* Softened text color */
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.1em;
+    font-size: 1rem;
     padding-top: 5px;
+    line-height: 1.4;
 }
 
-/* --- SECTION STYLING --- */
+.greeting-signature {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #800000;
+}
+
+/* --- SECTION & MEDIA STYLING (CRITICAL FOR FLUIDITY) --- */
 
 .section-title {
-    text-align: center;
-    color: #008938; /* 7-Eleven Green Accent */
-    font-size: 2em;
-    margin-top: 30px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #DD0000; /* 7-Eleven Red dashed line */
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1.5rem; /* Smaller size for mobile */
+    margin-top: 20px;
+    padding-bottom: 5px;
 }
 
 .photo-container {
     text-align: center;
-    margin: 25px 0;
-    /* Used Gold for the main frame border for elegance */
-    border: 5px double #DAA520; 
-    border-radius: 10px;
+    margin: 15px 0;
+    /* Adjust border and shadow for mobile */
+    border: 3px double #DAA520;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .group-photo {
+    /* Ensures the video/image fills its container and remains fluid */
     width: 100%;
     height: auto;
     display: block;
 }
 
 .photo-caption {
-    text-align: center;
-    font-size: 1.2em;
-    color: #800000; /* Rich Maroon for harmony */
-    padding: 15px 0;
-    font-style: italic;
-    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px;
 }
 
 /* --- FOOTER STYLING --- */
 
 .footer {
-    text-align: center;
-    padding-top: 25px;
-    border-top: 1px solid #ccc;
-    color: #333;
-    font-size: 0.9em;
+    padding-top: 20px;
+    font-size: 0.8rem;
 }
 
-/* --- SNOW EFFECT STYLING (CRITICAL FOR HARMONY/SNOWFLAKES) --- */
+/* --- MUSIC PROMPT STYLING --- */
 
-#snow-container {
+#music-prompt-container { /* Targeting the new container div */
+    display: none; /* Start hidden, JS shows it */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    z-index: 2000;
+    text-align: center;
+}
+
+.music-toggle-btn { /* Style the actual button for easy tapping */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    background-color: #DD0000;
+    color: white;
+    border: 3px solid #DAA520;
+    border-radius: 8px;
+    font-size: 1.2rem; /* Larger tap target */
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.2s;
+    touch-action: manipulation; /* Improves responsiveness on touch devices */
+}
+
+.music-toggle-btn:hover {
+    background-color: #800000; /* Darker on hover/touch */
+}
+
+/* --- SNOW EFFECT STYLING (Remains fixed and full screen) --- */
+
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Use viewport units for full coverage */
+    height: 100vh;
     pointer-events: none;
-    z-index: 1000; /* Ensure it's above everything */
+    z-index: 1000;
 }
 
 .snowflake {
-    color: white; /* Ensure snow is bright white */
-    font-size: 1.2em; /* Slightly larger snowflakes */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Gives them a slight glow */
-    position: absolute;
-    top: -20px;
-    opacity: 0.8;
-    animation: fall linear infinite;
+    font-size: 1rem; /* Slightly smaller for mobile performance */
+    /* ... (rest of snowflake styles remain the same) ... */
 }
-
+/* Ensure keyframes is defined */
 @keyframes fall {
     to {
         transform: translateY(100vh);
     }
 }
-/* Add this new style to the end of your existing style.css */
-
-.greeting-signature {
-    margin-top: 15px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #800000; /* Rich Maroon color for the signature */
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
-}
-/* --- GLOBAL FONT CHANGES for a Joyous Christmas Look --- */
-
-body {
-    /* ... (rest of body styles remain the same) ... */
-    font-family: 'Cormorant Garamond', serif; /* Elegant, readable body font */
-}
-
-/* Update H1 to use the script font */
-.header h1 {
-    font-family: 'Dancing Script', cursive; /* The main Christmas, Joyous Font */
-    font-size: 4.5em; /* A bit larger */
-    color: #800000;
-    text-shadow: 2px 2px 3px #DAA520; /* Stronger Gold shadow */
-    margin: 10px 0;
-}
-
-/* Make other headings bold and clear */
-.section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700; /* Bold */
-    /* ... (rest of section-title styles remain the same) ... */
-}
-
-/* --- MUSIC PROMPT STYLING --- */
-
-.music-prompt {
-    display: none; /* Starts hidden, JavaScript shows it if music fails */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2000; /* Above everything */
-    padding: 20px 30px;
-    background-color: #DD0000; /* 7-Eleven Red */
-    color: white;
-    border: 5px solid #DAA520; /* Christmas Gold */
-    border-radius: 10px;
-    font-size: 1.5em;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    animation: pulse 1.5s infinite;
-}
-
 @keyframes pulse {
     0% { transform: translate(-50%, -50%) scale(1); }
     50% { transform: translate(-50%, -50%) scale(1.05); }
     100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ----------------------------------------------------
+   2. MEDIA QUERIES (Styles for Tablet and Desktop)
+   ---------------------------------------------------- */
+
+/* --- Tablet and small desktop (min-width: 600px) --- */
+@media (min-width: 600px) {
+    
+    .container {
+        /* Reintroduce desktop-style constraints */
+        max-width: 800px;
+        margin: 40px auto; /* Reintroduce vertical margin */
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        border: 1px solid #FF8200;
+    }
+    
+    .header h1 {
+        /* Increase font size for tablet/desktop */
+        font-size: 3.5rem; 
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .photo-caption {
+        font-size: 1.2em;
+    }
+
+    .music-toggle-btn {
+        font-size: 1.5rem; /* Larger button */
+    }
+}
+
+/* --- Larger Desktop (min-width: 1024px) --- */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 900px; /* Max out the width as in your original design */
+    }
+
+    .header h1 {
+        /* Full desktop size */
+        font-size: 4.5rem; 
+    }
 }
