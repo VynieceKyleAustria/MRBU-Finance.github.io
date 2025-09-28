@@ -1,28 +1,39 @@
-document.getElementById('play-button').addEventListener('click', function() {
-    const audio = document.getElementById('background-music');
-    const video = document.getElementById('celebration-video'); // Get the video element
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const backgroundMusic = document.getElementById('background-music');
+        const musicStarter = document.getElementById('music-starter');
+        const promptContainer = document.getElementById('music-prompt-container');
 
-    // Attempt to play background music first (async)
-    audio.play().then(() => {
-        // 1. If music starts, start the video playback 🎬
-        if (video) {
-            video.play(); 
+        // By default, show the prompt container (it covers the screen)
+        promptContainer.style.display = 'block';
+
+        // Add a click listener to the dedicated starter button
+        musicStarter.addEventListener('click', () => {
+            // Attempt to play the music. play() returns a Promise.
+            const playPromise = backgroundMusic.play();
+
+            // Check if the Promise resolved successfully
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Music started successfully! Hide the prompt.
+                    promptContainer.style.display = 'none';
+                    console.log("Music started playing!");
+                }).catch(error => {
+                    // Play was prevented (browser still blocked it).
+                    console.error("Music playback was blocked or failed:", error);
+                    // Optionally, you could change the button text to show an error
+                    musicStarter.textContent = "Music Blocked. Check Device Settings.";
+                });
+            }
+        });
+
+        // OPTIONAL: Auto-play muted video
+        // Since you removed 'autoplay' from the video for mobile compatibility, 
+        // you can try to start it *muted* when the page loads for a good visual start.
+        const celebrationVideo = document.getElementById('celebration-video');
+        if (celebrationVideo) {
+            celebrationVideo.muted = true; // MUST BE MUTED for auto-play on mobile
+            celebrationVideo.play().catch(e => console.log("Muted video autoplay failed:", e));
         }
-
-        // 2. Fade out and hide the intro overlay
-        const overlay = document.getElementById('intro-overlay');
-        overlay.style.opacity = '0'; 
-        setTimeout(() => {
-            overlay.style.display = 'none'; 
-        }, 500);
-
-    }).catch(error => {
-        console.error("Audio autoplay failed, but proceeding with video and page entry:", error);
-        
-        // If audio fails, still attempt to start video and hide the overlay
-        if (video) {
-            video.play(); 
-        }
-        document.getElementById('intro-overlay').style.display = 'none';
     });
-});
+</script>
