@@ -1,81 +1,89 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accounting Team: Happy Holidays! 🎄</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accounting Team: Happy Holidays! 🎄</title>
+
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
+
 <body>
-    <audio id="background-music" src="Tayo.mp3" autoplay loop></audio>
 
-    <button id="music-starter" style="display: none;">Start Music</button>
-    <div id="music-message" class="music-prompt">
-        Click anywhere to enjoy our festive music!
-    </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <header class="header">
-            <div class="seven-eleven-logo">
-                <span class="seven">7</span><span class="eleven">ELEVEN</span>
-            </div>
-            <h1>Merry Christmas & Happy New Year!</h1> 
-            <p>Wishing all departments a harmonious and joyful holiday season!</p>
-            <p class="greeting-signature">– From your friends on the **Accounting Team**</p>
-        </header>
+    <audio id="background-music" src="Tayo.mp3" autoplay loop></audio>
 
-        <section class="photo-section">
-            <h2 class="section-title">A Look Back at a Great Year!</h2>
-            <div class="photo-container">
-                <video id="celebration-video" controls class="group-photo" preload="metadata" autoplay muted loop>
-                    <source src="KAMI.mp4" type="video/mp4"> 
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <p class="photo-caption">We look forward to balancing the books and sharing success with you in the New Year!</p>
-        </section>
 
-        <section class="recycling-section">
-            <h2 class="section-title">♻️ Thinking Sustainably this Season 🌍</h2>
-            <div class="recycling-image-container">
-                <img 
-                    src="http://googleusercontent.com/image_collection/image_retrieval/11786810538669131049_0" 
-                    alt="Stylized graphic showing bins for different recyclable materials like paper, plastic, and glass" 
-                    class="recycling-graphic"
-                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;"
-                >
-            </div>
-            
-            <p>Let's make sure our holiday waste is handled responsibly! Remember to **reduce, reuse, and recycle** this season. Focus on these main categories:</p>
 
-            <ul class="recycling-details-list">
-                <li>**Paper & Cardboard:** Flatten boxes and remove all tape and non-paper items.</li>
-                <li>**Plastics (1-7):** Rinse bottles and containers completely clean before placing them in the bin.</li>
-                <li>**Metals:** Aluminum cans and clean steel food cans are highly valuable for recycling.</li>
-            </ul>
-            <p>Check local guidelines for proper disposal of specialized materials like string lights or batteries.</p>
-        </section>
-        <footer class="footer">
-            <p>&copy; 2025. Created with 7-Eleven Christmas cheer by the **Accounting Team**.</p>
-        </footer>
-    </div>
-    <script>
-        document.addEventListener('click', function() {
-            const audio = document.getElementById('background-music');
-            const message = document.getElementById('music-message');
-            if (audio.paused) {
-                audio.play().catch(error => {
-                    // Autoplay was prevented
-                    console.error("Music autoplay prevented:", error);
-                });
-                message.style.display = 'none';
-            }
-        }, { once: true });
-    </script>
-</body>
-</html>
+    <button id="music-starter" style="display: none;">Start Music</button>
+
+    <div id="music-message" class="music-prompt">
+
+        Click anywhere to enjoy our festive music!
+
+    </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="container">
+
+        <header class="header">
+
+            <div class="seven-eleven-logo">
+
+                <span class="seven">7</span><span class="eleven">ELEVEN</span>
+
+            </div>
+
+            <h1>Merry Christmas & Happy New Year!</h1> 
+
+            <p>Wishing all departments a harmonious and joyful holiday season!</p>
+
+            <p class="greeting-signature">– From your friends on the **Accounting Team**</p>
+
+        </header>
+
+
+
+        <section class="photo-section">
+
+            <h2 class="section-title">A Look Back at a Great Year!</h2>
+
+            <div class="photo-container">
+
+                <video id="celebration-video" controls class="group-photo" preload="metadata" autoplay muted loop>
+
+                    <source src="KAMI.mp4" type="video/mp4"> 
+
+                    Your browser does not support the video tag.
+
+                </video>
+
+            </div>
+
+            <p class="photo-caption">We look forward to balancing the books and sharing success with you in the New Year!</p>
+
+        </section>
+
+
+
+        <footer class="footer">
+
+            <p>&copy; 2025. Created with 7-Eleven Christmas cheer by the **Accounting Team**.</p>
+
+        </footer>
