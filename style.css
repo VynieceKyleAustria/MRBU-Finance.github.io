@@ -1,238 +1,165 @@
-/* Color Palette:
-    7-Eleven Green: #008938
-    7-Eleven Red: #DD0000
-    7-Eleven Orange: #FF8200
-    Harmonious Christmas Gold: #DAA520 (Goldenrod)
-    Harmonious Christmas Maroon: #800000 (Deep Red)
-*/
-
-/* ----------------------------------------------------
-   1. MOBILE-FIRST BASE STYLES (Default for all screens)
-   ---------------------------------------------------- */
+:root {
+    --primary-color: #e50914; /* Anime/Streaming Red */
+    --secondary-color: #f4f4f9;
+    --text-color: #333;
+    --bg-dark: #1e1e1e;
+    --bg-light: #ffffff;
+}
 
 body {
-    /* Set relative font size and font family for mobile base */
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 16px; /* Base for REM calculations */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-    color: #333;
-    /* Removed overflow-x: hidden; (best practice to avoid scroll issues) */
+    padding: 20px;
     min-height: 100vh;
-    border-top: 10px solid #DD0000;
-    border-bottom: 10px solid #008938;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    /* Mobile-First: Use 100% width with a little padding */
-    width: 100%; 
-    max-width: none; /* Override old max-width */
-    margin: 0; /* Remove vertical margins on mobile */
-    padding: 20px 15px; /* Use smaller, uniform padding for tight screens */
-    background-color: #ffffff;
-    border-radius: 0; /* No heavy radius on mobile, can add later */
-    box-shadow: none; /* Lighter shadow for performance on mobile */
-    border: none; /* Remove border on small screens */
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--bg-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* --- LOGO STYLING --- */
-
-.seven-eleven-logo {
-    font-size: 1.8em; /* Smaller, relative size */
+h1 {
+    color: var(--primary-color);
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 2em;
+    letter-spacing: 1px;
 }
 
-.seven {
-    color: #DD0000;
-    padding-right: 2px;
+/* --- Input Form Styling --- */
+#link-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+#name-input, #link-input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+#name-input {
+    flex-grow: 1;
+    width: 30%;
+}
+#link-input {
+    flex-grow: 2;
+}
+#name-input:focus, #link-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
 }
 
-.eleven {
-    color: #008938;
-    background-color: #FF8200;
-    padding: 1px 3px;
-    border-radius: 3px;
-    letter-spacing: 0.5px;
-}
-
-/* --- HEADER/TEXT STYLING --- */
-
-.header {
-    text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #DAA520;
-}
-
-.header h1 {
-    font-family: 'Dancing Script', cursive;
-    /* Use relative units for headings */
-    font-size: 2.5rem; 
-    color: #800000;
-    text-shadow: 1px 1px 2px #DAA520;
-    margin: 5px 0 10px 0;
-}
-
-.header p {
-    font-size: 1rem;
-    padding-top: 5px;
-    line-height: 1.4;
-}
-
-.greeting-signature {
-    margin-top: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #800000;
-}
-
-/* --- SECTION & MEDIA STYLING (CRITICAL FOR FLUIDITY) --- */
-
-.section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: 1.5rem; /* Smaller size for mobile */
-    margin-top: 20px;
-    padding-bottom: 5px;
-}
-
-.photo-container {
-    text-align: center;
-    margin: 15px 0;
-    /* Adjust border and shadow for mobile */
-    border: 3px double #DAA520;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-}
-
-.group-photo {
-    /* Ensures the video/image fills its container and remains fluid */
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.photo-caption {
-    font-size: 1rem;
-    padding: 10px;
-}
-
-/* --- FOOTER STYLING --- */
-
-.footer {
-    padding-top: 20px;
-    font-size: 0.8rem;
-}
-
-/* --- MUSIC PROMPT STYLING --- */
-
-#music-prompt-container { /* Targeting the new container div */
-    display: none; /* Start hidden, JS shows it */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
-    z-index: 2000;
-    text-align: center;
-}
-
-.music-toggle-btn { /* Style the actual button for easy tapping */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 30px;
-    background-color: #DD0000;
+#link-submit {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--primary-color);
     color: white;
-    border: 3px solid #DAA520;
-    border-radius: 8px;
-    font-size: 1.2rem; /* Larger tap target */
-    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.2s;
-    touch-action: manipulation; /* Improves responsiveness on touch devices */
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+}
+#link-submit:hover {
+    background-color: #a3060f;
+}
+#link-submit:active {
+    transform: scale(0.98);
 }
 
-.music-toggle-btn:hover {
-    background-color: #800000; /* Darker on hover/touch */
+/* --- List Styling --- */
+#anime-list {
+    list-style: none;
+    padding: 0;
+    border-top: 2px solid #eee;
 }
 
-/* --- SNOW EFFECT STYLING (Remains fixed and full screen) --- */
-
-#snow-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Use viewport units for full coverage */
-    height: 100vh;
-    pointer-events: none;
-    z-index: 1000;
+#anime-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.snowflake {
-    font-size: 1rem; /* Slightly smaller for mobile performance */
-    /* ... (rest of snowflake styles remain the same) ... */
-}
-/* Ensure keyframes is defined */
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
-}
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.05); }
-    100% { transform: translate(-50%, -50%) scale(1); }
+.anime-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s;
 }
 
-/* ----------------------------------------------------
-   2. MEDIA QUERIES (Styles for Tablet and Desktop)
-   ---------------------------------------------------- */
-
-/* --- Tablet and small desktop (min-width: 600px) --- */
-@media (min-width: 600px) {
-    
-    .container {
-        /* Reintroduce desktop-style constraints */
-        max-width: 800px;
-        margin: 40px auto; /* Reintroduce vertical margin */
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-        border: 1px solid #FF8200;
-    }
-    
-    .header h1 {
-        /* Increase font size for tablet/desktop */
-        font-size: 3.5rem; 
-    }
-
-    .section-title {
-        font-size: 2em;
-    }
-
-    .photo-caption {
-        font-size: 1.2em;
-    }
-
-    .music-toggle-btn {
-        font-size: 1.5rem; /* Larger button */
-    }
+.anime-info a:hover {
+    color: #a3060f;
+    text-decoration: underline;
 }
 
-/* --- Larger Desktop (min-width: 1024px) --- */
-@media (min-width: 1024px) {
-    .container {
-        max-width: 900px; /* Max out the width as in your original design */
-    }
+.anime-link {
+    display: block;
+    font-size: 0.8em;
+    color: #999;
+    margin-top: 4px;
+    word-break: break-all;
+}
 
-    .header h1 {
-        /* Full desktop size */
-        font-size: 4.5rem; 
-    }
+.delete-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+.delete-btn:hover {
+    color: var(--primary-color);
+}
+
+#empty-message {
+    text-align: center;
+    color: #999;
+}
+
+/* --- Dark Mode Styling --- */
+#mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ccc;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.dark-mode {
+    background-color: var(--bg-dark);
+    color: #f4f4f9;
+}
+.dark-mode .container {
+    background: #2b2b2b;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+.dark-mode #name-input, .dark-mode #link-input {
+    background-color: #3b3b3b;
+    border-color: #555;
+    color: #f4f4f9;
+}
+.dark-mode #anime-list {
+    border-top-color: #555;
+}
+.dark-mode #anime-list li {
+    border-bottom-color: #3b3b3b;
+}
+.dark-mode .anime-link, .dark-mode .delete-btn, .dark-mode #empty-message {
+    color: #bbb;
 }
