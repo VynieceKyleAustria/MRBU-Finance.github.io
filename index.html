@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Infinite Anime Watch List</title>
+    <title>My Offline Anime Download List</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <button id="mode-toggle">Toggle Dark Mode</button>
+    <div class="header">
+        <h1>My Anime Download List 💾🎬</h1>
+        <button id="mode-toggle">Toggle Dark Mode</button>
+    </div>
 
     <div class="container">
-        <h1>My Infinite Anime Watch List 🎬</h1>
-        
-        <div id="video-player-container" class="hidden">
-            <h2 id="current-title"></h2>
-            <div class="video-wrapper">
-                <iframe id="video-embed" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <button id="close-player">Close Player & Return to List</button>
-        </div>
         <div id="list-view">
             <form id="link-form">
                 <input type="text" id="name-input" placeholder="Anime Title (Optional)">
-                <input type="url" id="link-input" placeholder="Paste EMBED URL here..." required>
-                <button type="submit" id="link-submit">Add</button>
+                
+                <input type="text" id="file-path-input" placeholder="Paste Full URL or Local Path (e.g., videos/ep1.mp4)" required>
+                <button type="submit" id="link-submit">Add to List</button>
             </form>
 
             <ul id="anime-list">
                 </ul>
-            <p id="empty-message" style="display: none;">Your list is empty. Time to find some anime!</p>
+            <p id="empty-message" style="display: none;">Your list is empty. Time to add some download links!</p>
         </div>
     </div>
 
