@@ -5,6 +5,13 @@ const linkInput = document.getElementById('link-input');
 const emptyMessage = document.getElementById('empty-message');
 const modeToggle = document.getElementById('mode-toggle');
 
+// New Player Elements
+const videoPlayerContainer = document.getElementById('video-player-container');
+const videoEmbed = document.getElementById('video-embed');
+const currentTitle = document.getElementById('current-title');
+const closePlayerBtn = document.getElementById('close-player');
+const listView = document.getElementById('list-view');
+
 // --- Core Function: Render a List Item ---
 function createListItem(name, url) {
     const listItem = document.createElement('li');
@@ -13,12 +20,16 @@ function createListItem(name, url) {
     const infoDiv = document.createElement('div');
     infoDiv.className = 'anime-info';
 
-    // Title/Link element
-    const linkA = document.createElement('a');
-    linkA.href = url;
-    linkA.target = "_blank";
-    linkA.textContent = name || 'Untitled Link'; 
-    
+    // Title/Link element (now acts as a PLAY button)
+    const playLink = document.createElement('a');
+    playLink.textContent = name || 'Untitled Link'; 
+    playLink.href = "#"; // Prevent navigation
+    playLink.title = "Click to watch";
+    playLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Stop the default link action
+        loadVideo(url, name);
+    });
+
     // Display the actual link for reference
     const linkSpan = document.createElement('span');
     linkSpan.textContent = url;
@@ -32,15 +43,41 @@ function createListItem(name, url) {
         removeLink(url);
     });
 
-    infoDiv.appendChild(linkA);
+    infoDiv.appendChild(playLink);
     infoDiv.appendChild(linkSpan);
 
     listItem.appendChild(infoDiv);
     listItem.appendChild(deleteBtn);
-    list.prepend(listItem); // Add to the top of the list
+    list.prepend(listItem);
 }
 
-// --- Data Management Functions (Using localStorage) ---
+// --- Video Player Functions ---
+
+// 1. Function to switch to player mode
+function loadVideo(url, name) {
+    currentTitle.textContent = name || 'Now Playing';
+    videoEmbed.src = url;
+    
+    // Switch views
+    listView.classList.add('hidden');
+    videoPlayerContainer.classList.remove('hidden');
+    
+    // Scroll to the top of the page to focus on the player
+    window.scrollTo(0, 0);
+}
+
+// 2. Function to close the player
+function closePlayer() {
+    // Stop the video by removing the source
+    videoEmbed.src = '';
+    
+    // Switch views
+    videoPlayerContainer.classList.add('hidden');
+    listView.classList.remove('hidden');
+}
+
+
+// --- Data Management Functions (Unchanged) ---
 function getLinks() {
     const links = localStorage.getItem('animeLinks');
     return links ? JSON.parse(links) : [];
@@ -54,7 +91,6 @@ function saveLinks(links) {
 function addLink(name, url) {
     const links = getLinks();
     
-    // Check for duplicates
     if (links.some(item => item.url === url)) {
         alert('This link is already on your list!');
         return;
@@ -64,7 +100,6 @@ function addLink(name, url) {
     links.push(newLink);
     saveLinks(links);
     
-    // Efficiently update the view
     list.innerHTML = '';
     renderList();
 }
@@ -74,7 +109,6 @@ function removeLink(urlToRemove) {
     links = links.filter(item => item.url !== urlToRemove);
     saveLinks(links);
     
-    // Remove the item from the DOM
     const items = list.querySelectorAll('li');
     items.forEach(li => {
         const linkElement = li.querySelector('.anime-link');
@@ -87,9 +121,8 @@ function removeLink(urlToRemove) {
 
 function renderList() {
     const links = getLinks();
-    list.innerHTML = ''; // Clear the list
+    list.innerHTML = '';
     
-    // Display newest links first
     links.slice().reverse().forEach(item => {
         createListItem(item.name, item.url);
     });
@@ -115,6 +148,10 @@ form.addEventListener('submit', function(event) {
         linkInput.focus();
     }
 });
+
+// New Event Listener for the close button
+closePlayerBtn.addEventListener('click', closePlayer);
+
 
 modeToggle.addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
