@@ -1,227 +1,132 @@
+/* --- Base Reset and Setup --- */
 :root {
-    --primary-color: #e50914; /* Anime/Streaming Red */
-    --secondary-color: #f4f4f9;
+    --bg-color: #f4f4f9;
     --text-color: #333;
-    --bg-dark: #1e1e1e;
-    --bg-light: #ffffff;
+    --card-bg: #fff;
+    --accent-color: #5c67f2;
+    --border-color: #ccc;
+}
+
+/* --- Dark Mode Variables --- */
+body.dark-mode {
+    --bg-color: #1a1a2e;
+    --text-color: #e4e4e9;
+    --card-bg: #2e2c4d;
+    --accent-color: #92e6a7;
+    --border-color: #444;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--secondary-color);
+    background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
-    padding: 20px;
-    min-height: 100vh;
+    padding: 0;
     transition: background-color 0.3s, color 0.3s;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
 .container {
-    max-width: 900px; /* Increased size for video player */
-    margin: 0 auto;
-    background: var(--bg-light);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-h1 {
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2em;
-    letter-spacing: 1px;
-}
-
-/* --- Utility Class --- */
-.hidden {
-    display: none !important;
-}
-
-/* --- Video Player Styling --- */
-#video-player-container {
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: center;
 }
 
-#current-title {
-    color: var(--primary-color);
-    margin-top: 0;
-}
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
-    margin-bottom: 15px;
-}
-
-#video-embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-#close-player {
-    background-color: #555;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-#close-player:hover {
-    background-color: #333;
-}
-
-
-/* --- List and Form Styling (Existing Styles, with additions) --- */
+/* --- Form Styling --- */
 #link-form {
     display: flex;
     gap: 10px;
     margin-bottom: 30px;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-#name-input, #link-input {
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 1em;
-    transition: border-color 0.3s;
-}
-#name-input {
+
+input[type="text"], input[type="url"] {
     flex-grow: 1;
-    width: 30%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
-#link-input {
-    flex-grow: 2;
-}
-#name-input:focus, #link-input:focus {
-    border-color: var(--primary-color);
-    outline: none;
+
+button, .download-link {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, opacity 0.2s;
 }
 
 #link-submit {
-    padding: 10px 20px;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-    cursor: pointer;
-    border-radius: 6px;
-    font-size: 1em;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.1s;
+    background-color: var(--accent-color);
+    color: #fff;
 }
-#link-submit:hover {
-    background-color: #a3060f;
-}
-#link-submit:active {
-    transform: scale(0.98);
+
+#mode-toggle {
+    background-color: var(--accent-color);
+    color: #fff;
 }
 
 /* --- List Styling --- */
 #anime-list {
     list-style: none;
     padding: 0;
-    border-top: 2px solid #eee;
 }
 
 #anime-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
 }
 
-.anime-info a {
-    /* Reworking this link to act as a PLAY button */
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
+#anime-list li span {
     font-size: 1.1em;
-    transition: color 0.3s;
-    cursor: pointer;
+    font-weight: 500;
 }
 
-.anime-info a:hover {
-    color: #a3060f;
-    text-decoration: underline;
+.actions {
+    display: flex;
+    gap: 10px;
 }
 
-.anime-link {
-    display: block;
-    font-size: 0.8em;
-    color: #999;
-    margin-top: 4px;
-    word-break: break-all;
+/* Style the download link as a button */
+.download-link {
+    text-decoration: none;
+    background-color: #38a169; /* Green for download */
+    color: white;
+    padding: 8px 12px;
+    display: inline-block;
 }
 
 .delete-btn {
-    background: none;
-    border: none;
-    color: #999;
-    cursor: pointer;
-    font-size: 1.2em;
-    padding: 5px 10px;
-    transition: color 0.2s;
+    background-color: #e53e3e; /* Red for delete */
+    color: white;
 }
+
 .delete-btn:hover {
-    color: var(--primary-color);
+    opacity: 0.8;
 }
 
 #empty-message {
     text-align: center;
-    color: #999;
-}
-
-/* --- Dark Mode Styling --- */
-#mode-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #ccc;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Dark Mode Overrides for new elements */
-.dark-mode {
-    background-color: var(--bg-dark);
-    color: #f4f4f9;
-}
-.dark-mode .container {
-    background: #2b2b2b;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-}
-.dark-mode #video-player-container {
-    border-color: #555;
-}
-.dark-mode #close-player {
-    background-color: #666;
-}
-/* ... (keep the rest of the dark mode overrides from previous file) */
-.dark-mode #name-input, .dark-mode #link-input {
-    background-color: #3b3b3b;
-    border-color: #555;
-    color: #f4f4f9;
-}
-.dark-mode #anime-list {
-    border-top-color: #555;
-}
-.dark-mode #anime-list li {
-    border-bottom-color: #3b3b3b;
-}
-.dark-mode .anime-link, .dark-mode .delete-btn, .dark-mode #empty-message {
-    color: #bbb;
+    padding: 20px;
+    font-style: italic;
+    color: var(--text-color);
 }
